@@ -57,7 +57,6 @@ def create_counters(name):
     app.logger.info("Request to Create counter: %s...", name)
 
     if name in COUNTER:
-        # E501 fix: Break the long f-string into multiple lines within parentheses
         return abort(
             status.HTTP_409_CONFLICT,
             f"Counter {name} already exists"
@@ -87,7 +86,10 @@ def read_counters(name):
     app.logger.info("Request to Read counter: %s...", name)
 
     if name not in COUNTER:
-        return abort(status.HTTP_404_NOT_FOUND, f"Counter {name} does not exist")
+        return abort(
+            status.HTTP_404_NOT_FOUND, 
+            f"Counter {name} does not exist"
+        )
 
     counter = COUNTER[name]
     return jsonify(name=name, counter=counter)
