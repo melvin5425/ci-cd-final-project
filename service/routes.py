@@ -87,7 +87,7 @@ def read_counters(name):
 
     if name not in COUNTER:
         return abort(
-            status.HTTP_404_NOT_FOUND, 
+            status.HTTP_404_NOT_FOUND,
             f"Counter {name} does not exist"
         )
 
